@@ -1,5 +1,5 @@
 -- --------------------------------------------------------------------------
--- Ejercicio 7.
+-- Ejercicio 8.
 -----------------------------------------------------------------------------
 -- Define la funcion "numeroDeRaices a b c", esta "a, b, c" para aplicarlos
 -- a la ecuacion cuadratica ax^2 + bx + c = 0
