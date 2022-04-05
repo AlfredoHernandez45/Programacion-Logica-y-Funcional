@@ -1,12 +1,12 @@
 -- --------------------------------------------------------------------------
 -- Ejercicio 7.
 -----------------------------------------------------------------------------
--- Define la funcion "mediana", la mediana de una lista de valores es el valor de 
--- la lista que ocupa el lugar central de los valores ordenados de menor
--- a mayor. Si el número de datos es impar se toma como valor de la
--- mediana el valor central. Si el número de datos es par se toma como
--- valor de la mediana la media aritmética de los dos valores
--- centrales.
+-- Define la funcion "mediana", la cual recibe un arreglo, o separa los 
+-- impares al dejar el primer numero de la lista, se divide entre 2 para 
+-- al final eliminarlo, o los numeros iguales los elimina y hace 
+-- recursividad mandando el siguiente numero seguido se organiza y se 
+-- obtiene la longitud del arreglo, la longitud se divide entre 2 y se le 
+-- resta uno 
 -- 
 -- Por ejemplo:
 --    mediana [2,3,6,8,9]    ==  6.0
@@ -15,11 +15,13 @@
 -- ---------------------------------------------------------------------
  
 import Data.List
-import Test.QuickCheck
+
+media :: Floating a => [a] -> a
+media xs = sum xs / genericLength xs
 
 mediana :: (Floating a, Ord a) => [a] -> a
-mediana xs | odd n  = ys !! i
-           | even n = media [ys !! (i-1), ys !! i]
+mediana xs | odd n  = head $ drop (n `div` 2) ys
+           | even n = media $ take 2 $ drop i ys
     where ys = sort xs
           n  = length xs
-          i  = n `div` 2
+          i  = (n `div` 2) - 1
